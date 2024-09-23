@@ -13,7 +13,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
-
+app.get("/", (req, res) => {
+  res.send("Nice to meet you");
+});
 app.post("/send-email", (req, res) => {
   console.log("Received email data:", req.body);
   const { name, email, text_p } = req.body;
