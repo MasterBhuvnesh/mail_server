@@ -13,7 +13,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
-
+app.get("/", (req, res) => {
+  res.send("Nice to meet you");
+});
 app.post("/send-email", (req, res) => {
   console.log("Received email data:", req.body);
   const { name, email, text_p } = req.body;
@@ -21,13 +23,13 @@ app.post("/send-email", (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER,
-      pass: process.env.PASS,
+      user: "bhuvneshverma2005@gmail.com",
+      pass: "rsbh egee zamk mixv",
     },
   });
 
   const mailOptions = {
-    from: process.env.USER,
+    from: "bhuvneshverma2005@gmail.com",
     to: email,
     subject: `${name}, Thanks for your response`,
     text: `Your response  - ${text_p}`,
