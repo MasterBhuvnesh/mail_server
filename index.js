@@ -20,20 +20,35 @@ app.post("/send-email", (req, res) => {
   console.log("Received email data:", req.body);
   const { name, email, text_p } = req.body;
 
-  const transporter = nodemailer.createTransport({
+//   const transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+// user: "bhuvneshverma2005@gmail.com",
+// pass: "rsbh egee zamk mixv"
+//     },
+//   });
+
+//   const mailOptions = {
+//     from: "bhuvneshverma2005@gmail.com",
+//     to: email,
+//     subject: `${name}, Thanks for your response`,
+//     text: `Your response  - ${text_p}`,
+//   };
+    const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-user: "bhuvneshverma2005@gmail.com",
-pass: "rsbh egee zamk mixv"
+      user: process.env.USER,
+      pass: process.env.PASS,
     },
   });
 
   const mailOptions = {
-    from: "bhuvneshverma2005@gmail.com",
+    from: process.env.USER,
     to: email,
     subject: `${name}, Thanks for your response`,
     text: `Your response  - ${text_p}`,
   };
+
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
