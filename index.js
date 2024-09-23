@@ -6,11 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 const corsOptions = {
-  origin: [
-    "https://masterbhuvnesh.github.io/portfolio/",
-    "*",
-    "http://localhost:3000",
-  ],
+  origin: ["https://masterbhuvnesh.github.io", "http://localhost:3000"],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
