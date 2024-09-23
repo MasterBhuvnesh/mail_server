@@ -11,7 +11,6 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"],
 };
 app.use(cors(corsOptions));
-// app.use(express.static(path.join(__dirname, "icon")));
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Nice to meet you");
